@@ -18,15 +18,33 @@ Class Grid
 	function create_empty_grid($size)
 	{
 		$grid = [];
-		for($x=0; $x<$size; $x++)
+		for($y=0; $y<$size; $y++) //building each row, so y-coordinate first
 		{
-			$grid[$x] = [];
-			for($y=0; $y<$size; $y++)
+			$grid[$y] = [];
+			for($x=0; $x<$size; $x++)
 			{
 				$tile = new Tile($x, $y);
-				array_push($grid[$x], $tile);
+				array_push($grid[$y], $tile);
 			}
 		}
 		$this->grid = $grid;
+	}
+
+	//create html table to display tiles in grid
+	function display_grid()
+	{
+		$size = count($this->grid);
+		$html = "";
+		for($y=0; $y<$size; $y++) //building each row, so y-coordinate first
+		{
+			$html .= "<tr>";
+			for($x=0;$x<$size;$x++)
+			{
+				//$html .= "<td>{$this->grid[$x][$y]->x} {$this->grid[$x][$y]->y}</td>";
+				$html .= "<td class=" . ($this->grid[$x][$y]->state ? "true" : "false") . ">{$this->grid[$x][$y]->state}</td>";
+			}
+			$html .= "</tr>";
+		}
+		return $html;
 	}
 }

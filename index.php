@@ -12,10 +12,7 @@
 <body>
 	<?php
 		//start small
-		$grid = new Grid(2);
-
-		echo "<pre>";
-		var_dump($grid->grid);
+		$grid = new Grid(3);
 
 	?>
 	<form action="process.php" method="POST">
@@ -25,6 +22,7 @@
 	<h4>Refresh page to advance to the next generation</h4>
 	<table>
 		<tbody>
+			<?= $grid->display_grid() ?>
 		</tbody>
 	</table>
 </body>
