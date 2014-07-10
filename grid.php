@@ -18,13 +18,13 @@ Class Grid
 	function create_empty_grid($size)
 	{
 		$grid = [];
-		for($y=0; $y<$size; $y++) //building each row, so y-coordinate first
+		for($x=0; $x<$size; $x++)
 		{
-			$grid[$y] = [];
-			for($x=0; $x<$size; $x++)
+			$grid[$x] = [];
+			for($y=0; $y<$size; $y++)
 			{
 				$tile = new Tile($x, $y);
-				array_push($grid[$y], $tile);
+				array_push($grid[$x], $tile);
 			}
 		}
 		$this->grid = $grid;
@@ -35,7 +35,7 @@ Class Grid
 	{
 		$size = count($this->grid);
 		$html = "";
-		for($y=0; $y<$size; $y++) //building each row, so y-coordinate first
+		for($y=0; $y<$size; $y++) //displaying by row, so y-coordinate first
 		{
 			$html .= "<tr>";
 			for($x=0;$x<$size;$x++)
@@ -43,7 +43,7 @@ Class Grid
 				//$html .= "<td>{$this->grid[$x][$y]->x} {$this->grid[$x][$y]->y}</td>";
 				$html .= "<td class="
 				      . ($this->grid[$x][$y]->state ? "true" : "false") 
-				      . ">{$this->grid[$x][$y]->state}</td>";
+				      . ">{$this->grid[$x][$y]->x}, {$this->grid[$x][$y]->y}</td>";
 			}
 			$html .= "</tr>";
 		}
@@ -77,7 +77,43 @@ Class Grid
 		return $count;
 	}
 
-	//advance next state of all tiles to current state
+	//determine the next state of each tile
+	function prepare_next_generation()
+	{
+		foreach($this->grid as $row)
+		{
+			foreach($row as $tile)
+			{
+				//var_dump($tile);
+				$count = $this->count_live_neighbors($tile);
+				//echo $count . "<br/>";
+				switch($count)
+				{
+					case 2: //tile remains the same
+						$tile->next_state = $tile->state;
+						break;
+					case 3: //tile stays or becomes alive
+						$tile->next_state = TRUE;
+						break;
+					default: //tile stays or becomes dead
+						$tile->next_state = FALSE;
+				}
+			}
+		}
+	}
 
+	//advance next state of all tiles to current state
+	function advance_generation()
+	{
+		foreach($this->grid as $row)
+		{
+			foreach($row as $tile)
+			{
+				$tile->state = $tile->next_state;
+			}
+		}
+		//finally, update the generation counter
+		$this->generation++;
+	}
 	//reset function
 }
