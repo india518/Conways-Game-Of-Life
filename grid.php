@@ -40,7 +40,6 @@ Class Grid
 			$html .= "<tr>";
 			for($x=0;$x<$size;$x++)
 			{
-				//$html .= "<td>{$this->grid[$x][$y]->x} {$this->grid[$x][$y]->y}</td>";
 				$html .= "<td class="
 				      . ($this->grid[$x][$y]->state ? "true" : "false") 
 				      . ">{$this->grid[$x][$y]->x}, {$this->grid[$x][$y]->y}</td>";
@@ -115,5 +114,6 @@ Class Grid
 		//finally, update the generation counter
 		$this->generation++;
 	}
+	
 	//reset function
 }
