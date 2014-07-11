@@ -29,10 +29,6 @@
 			$grid->grid[2][2] = new Tile(2,2,TRUE);
 		}
 	?>
-	<h2>To restart game, click here:</h2>
-	<form action="process.php" method="POST">
-		<input type="submit" value="Start over" />
-	</form>
 	<h2>Generation <?= $grid->generation ?></h2>
 	<h4>Refresh page to advance to the next generation</h4>
 	<table>
@@ -69,5 +65,9 @@
 			<?= $grid->display_grid() ?>
 		</tbody>
 	</table>
+	<h2>To restart game, click here:</h2>
+	<form action="process.php" method="POST">
+		<input type="submit" value="Start over" />
+	</form>
 </body>
 </html>
