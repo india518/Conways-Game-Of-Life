@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Game of Life</title>
-	<link rel="stylesheet" type="text/css" href="life.css" />
+	<link rel="stylesheet" type="text/css" href="/css/life.css" />
 </head>
 <body>
 	<?php
