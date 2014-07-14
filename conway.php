@@ -30,8 +30,10 @@
 				$grid = new Grid(25, $glider);
 			}
 		?>
-		<h2>Generation <?= $grid->generation ?></h2>
+		<h2>Conways <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Game of Life</a>!</h2>
+		<h4>This is my attempt to implement the Game of Life in PHP</4>
 		<h5>Refresh page to advance to the next generation, or <a href="process.php">Restart</a> the game</h5>
+		<h5>Current Generation: <?= $grid->generation ?></h5>
 		<table>
 			<tbody>
 				<?= $grid->display_grid() ?>
