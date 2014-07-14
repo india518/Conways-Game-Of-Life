@@ -6,10 +6,10 @@ Class Grid
 	var $size;
 	var $generation;
 
-	function __construct($size)
+	function __construct($size, $locations)
 	{
 		$this->size = $size;
-		$this->create_empty_grid($size);
+		$this->create_starting_grid($size, $locations);
 		$this->generation = 0;
 	}
 
@@ -30,15 +30,40 @@ Class Grid
 		$this->grid = $grid;
 	}
 
+	//create and seed grid in one function
+	//$locations is an array of where to place live tiles
+	function create_starting_grid($size, $locations)
+	{
+		//have argument list contain coordinates for live tiles.
+		//loop through array to place starting live tiles
+		$grid = [];
+		for($x=0; $x<$size; $x++)
+		{
+			$grid[$x] = [];
+			for($y=0; $y<$size; $y++)
+			{
+				if(in_array([$x,$y], $locations))
+				{
+					array_push($grid[$x], new Tile($x, $y, TRUE));
+				}
+				else
+				{
+					array_push($grid[$x], new Tile($x, $y));
+				}
+			}
+		}
+		$this->grid = $grid;
+	}
+
 	//create html table to display tiles in grid
 	function display_grid()
 	{
 		$size = count($this->grid);
 		$html = "";
-		for($y=0; $y<$size; $y++) //displaying by row, so y-coordinate first
+		for($x=0; $x<$size; $x++) //displaying by row, so x-coordinate first
 		{
 			$html .= "<tr>";
-			for($x=0;$x<$size;$x++)
+			for($y=0;$y<$size;$y++)
 			{
 				$html .= "<td class="
 				      . ($this->grid[$x][$y]->state ? "true" : "false") 

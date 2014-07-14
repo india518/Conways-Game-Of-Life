@@ -20,13 +20,8 @@
 		{
 			//new 'game': create new grid
 			//start small
-			$grid = new Grid(5);
-			//initializing a shape:
-			//$grid->grid[0][0] = new Tile(0,0,TRUE);
-			$grid->grid[0][1] = new Tile(0,1,TRUE);
-			$grid->grid[1][0] = new Tile(1,0,TRUE);
-			$grid->grid[1][2] = new Tile(1,2,TRUE);
-			$grid->grid[2][2] = new Tile(2,2,TRUE);
+			$starting_shape = array([0,1], [1,0], [2,1], [2,2]);
+			$grid = new Grid(5, $starting_shape);
 		}
 	?>
 	<h2>Generation <?= $grid->generation ?></h2>
@@ -37,24 +32,10 @@
 		</tbody>
 	</table>
 	<?php
-		// //testing functions for Grid
-		// echo "0,0: " . $grid->count_live_neighbors($grid->grid[0][0]) . "<br>";
-		// echo "0,1: " . $grid->count_live_neighbors($grid->grid[0][1]) . "<br>";
-		// echo "1,0: " . $grid->count_live_neighbors($grid->grid[1][0]) . "<br>";
-		// echo "1,1: " . $grid->count_live_neighbors($grid->grid[1][1]) . "<br>";
-		// echo "1,2: " . $grid->count_live_neighbors($grid->grid[1][2]) . "<br>";
-		// echo "2,1: " . $grid->count_live_neighbors($grid->grid[2][1]) . "<br>";
-		// echo "2,2: " . $grid->count_live_neighbors($grid->grid[2][2]) . "<br>";
-
-		//echo "the next state of these tiles:<br>";
 		$grid->prepare_next_generation();
-		// echo "0,0: " . $grid->grid[0][0]->next_state . "<br>";
-		// echo "1,1: " . $grid->grid[1][1]->next_state . "<br>";
-		// echo "1,2: " . $grid->grid[1][2]->next_state . "<br>";
-		// echo "2,1: " . $grid->grid[2][1]->next_state . "<br>";
-		// echo "2,2: " . $grid->grid[2][2]->next_state . "<br>";
-
-		echo "advancing the next generation, and displaying it (for testing!)";
+	?>
+	<p>advancing the next generation, and displaying it (for testing!)</p>
+	<?php
 		$grid->advance_generation();
 		//store the grid in session for the page reload:
 		$_SESSION['grid'] = serialize($grid);
