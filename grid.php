@@ -67,7 +67,8 @@ Class Grid
 			{
 				$html .= "<td class="
 				      . ($this->grid[$x][$y]->state ? "true" : "false") 
-				      . ">{$this->grid[$x][$y]->x}, {$this->grid[$x][$y]->y}</td>";
+				      //. ">{$this->grid[$x][$y]->x}, {$this->grid[$x][$y]->y}</td>";
+					  . "></td>";
 			}
 			$html .= "</tr>";
 		}

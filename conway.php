@@ -18,14 +18,18 @@
 		}
 		else
 		{
-			//new 'game': create new grid
-			//start small
-			$starting_shape = array([0,1], [1,0], [2,1], [2,2]);
-			$grid = new Grid(5, $starting_shape);
+			//new 'game': create new grid, seed it with a shape
+			//$starting_shape = array([0,1], [1,0], [2,1], [2,2]);
+			$glider = array([1,3],[2,3],[3,3],[3,2],[2,1]);
+			$grid = new Grid(50, $glider);
 		}
 	?>
 	<h2>Generation <?= $grid->generation ?></h2>
-	<h4>Refresh page to advance to the next generation</h4>
+	<h5>Refresh page to advance to the next generation</h5>
+	<h5 class="inline">Restart the game:</h5>
+	<form class="inline" action="process.php" method="POST">
+		<input type="submit" value="Restart!" />
+	</form>
 	<table>
 		<tbody>
 			<?= $grid->display_grid() ?>
@@ -34,21 +38,17 @@
 	<?php
 		$grid->prepare_next_generation();
 	?>
-	<p>advancing the next generation, and displaying it (for testing!)</p>
+	<!-- <p>advancing the next generation, and displaying it (for testing!)</p> -->
 	<?php
 		$grid->advance_generation();
 		//store the grid in session for the page reload:
 		$_SESSION['grid'] = serialize($grid);
 		//session_unset('grid');
 	?>
-	<table>
+	<!-- <table>
 		<tbody>
-			<?= $grid->display_grid() ?>
+			<?//= $grid->display_grid() ?>
 		</tbody>
-	</table>
-	<h2>To restart game, click here:</h2>
-	<form action="process.php" method="POST">
-		<input type="submit" value="Start over" />
-	</form>
+	</table> -->
 </body>
 </html>

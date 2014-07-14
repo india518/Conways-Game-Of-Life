@@ -5,10 +5,13 @@ table {
 
 td {
 	border: 1px solid black;
-	height: 20px;
-	width: 30px;
+	height: 10px;
+	width: 10px;
 }
 
+.inline {
+	display: inline;
+}
 .true {
 	background-color: red;
 }
