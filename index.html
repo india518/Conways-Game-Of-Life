@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The Game of Life!</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<h2> Welcome to Conway's <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Game of Life</a>!</h2>
+		<h4>Please fill out the form below to initialize the Game board :)</h4>
+		<form action="/game" method="POST">
+			<label for="size">Choose a size (from 10-50)</label>
+			<input type="number" name="size" min="10" max="50"/>
+			<div>
+				<label for="shape">Choose a starting shape:</label><br>
+				<input type="radio" name="shape" value="glider" checked="true"/>Glider Spaceship<br>
+				<input type="radio" name="shape" value="lwss"/>Lightweight Spaceship<br>
+				<!-- <input type="radio" name="shape" value="pulsar"/>Pulsar<br> -->
+				<input type="radio" name="shape" value="r_pentomino"/>R-pentomino<br>
+				<div>
+			<input class="btn" type="submit" />
+		</form>
+	</div>
+</body>
+</html>

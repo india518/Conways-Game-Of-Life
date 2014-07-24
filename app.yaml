@@ -8,7 +8,13 @@ handlers:
 # the css/ directory.
 - url: /css
   static_dir: css
-- url: /process.php
-  script: process.php
+- url: /js
+  static_dir: js
+- url: /
+  script: index.html
 - url: /conway
-  script: conway.php
+  script: index.html
+- url: /game
+  script: game.php
+- url: /process
+  script: process.php

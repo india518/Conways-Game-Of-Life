@@ -56,14 +56,15 @@ Class Grid
 	}
 
 	//create html table to display tiles in grid
+	//REMEMBER: X-coord is COLUMN, Y-coord is ROW!
 	function display_grid()
 	{
 		$size = count($this->grid);
 		$html = "";
-		for($x=0; $x<$size; $x++) //displaying by row, so x-coordinate first
+		for($y=0; $y<$size; $y++) //displaying by row, so y-coordinate first
 		{
 			$html .= "<tr>";
-			for($y=0;$y<$size;$y++)
+			for($x=0;$x<$size;$x++)
 			{
 				$html .= "<td class="
 				      . ($this->grid[$x][$y]->state ? "true" : "false") 
