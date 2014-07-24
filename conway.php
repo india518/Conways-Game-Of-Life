@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Game of Life</title>
+	<title>The Game of Life!</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/life.css" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -31,7 +31,7 @@
 			}
 		?>
 		<h2>Conways <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Game of Life</a>!</h2>
-		<h4>This is my attempt to implement the Game of Life in PHP</4>
+		<h4>This is my attempt to implement the 'Game of Life' in PHP and JavaScript</4>
 		<h5>Refresh page to advance to the next generation, or <a href="process.php">Restart</a> the game</h5>
 		<h5>Current Generation: <?= $grid->generation ?></h5>
 		<table>
@@ -39,6 +39,8 @@
 				<?= $grid->display_grid() ?>
 			</tbody>
 		</table>
+		<h5>Note:</h5>
+		<p>The game starts with a 'glider' in the upper-left corner. More initalization options coming soon!</p>
 		<?php
 			$grid->prepare_next_generation();
 			$grid->advance_generation();
